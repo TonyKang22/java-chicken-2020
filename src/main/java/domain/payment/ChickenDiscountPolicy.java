@@ -1,4 +1,7 @@
-package domain;
+package domain.domain.payment;
+
+import domain.domain.Money;
+import domain.domain.Orders;
 
 public class ChickenDiscountPolicy {
 

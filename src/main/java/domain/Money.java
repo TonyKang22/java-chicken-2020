@@ -1,4 +1,4 @@
-package domain;
+package domain.domain;
 
 import java.util.Objects;
 
@@ -23,6 +23,15 @@ public class Money {
 
     public void calculateOrder(Money money, int count) {
         this.amount += (money.getAmount() * count);
+    }
+
+    public Money subtractMoney(Money money) {
+        int subtratedAmount = this.amount - money.getAmount();
+        return new Money(subtratedAmount);
+    }
+
+    public String toString() {
+        return String.valueOf(this.amount);
     }
 
     @Override

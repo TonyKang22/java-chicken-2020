@@ -1,4 +1,4 @@
-package domain;
+package domain.domain;
 
 public enum OrderStatus {
     ORDERED,

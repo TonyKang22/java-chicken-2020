@@ -1,5 +1,9 @@
-package domain;
+package domain.payment;
 
+import domain.domain.MenuRepository;
+import domain.domain.Money;
+import domain.domain.Table;
+import domain.domain.payment.Payment;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

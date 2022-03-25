@@ -1,4 +1,4 @@
-package domain;
+package domain.domain;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -18,5 +18,12 @@ public class TableRepository {
 
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
+    }
+
+    public static Table findByNumber(int id) throws IllegalAccessException {
+        return tables().stream()
+                .filter(table -> table.validateSameTable(id))
+                .findFirst()
+                .orElseThrow(() -> new IllegalAccessException("존재하지 않는 테이블입니다."));
     }
 }

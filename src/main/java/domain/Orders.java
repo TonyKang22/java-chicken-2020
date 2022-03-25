@@ -1,7 +1,8 @@
-package domain;
+package domain.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Orders {
 
@@ -44,5 +45,12 @@ public class Orders {
             sum.calculateOrder(menu.getPrice(), menuCount);
         }
         return sum;
+    }
+
+    public Map<Menu, Integer> getOrderedMenus() {
+        return orders.entrySet()
+                .stream()
+                .filter(entry -> entry.getValue() > 0)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 }
