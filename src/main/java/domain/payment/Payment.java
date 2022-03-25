@@ -1,7 +1,7 @@
-package domain.domain.payment;
+package domain.payment;
 
-import domain.domain.Money;
-import domain.domain.Table;
+import domain.Money;
+import domain.Table;
 
 public class Payment {
 

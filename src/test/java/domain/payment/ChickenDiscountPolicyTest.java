@@ -1,9 +1,8 @@
-package domain;
+package domain.payment;
 
-import domain.domain.MenuRepository;
-import domain.domain.Money;
-import domain.domain.Table;
-import domain.domain.payment.ChickenDiscountPolicy;
+import domain.MenuRepository;
+import domain.Money;
+import domain.Table;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

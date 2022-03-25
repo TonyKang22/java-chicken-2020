@@ -1,15 +1,14 @@
 package domain.payment;
 
-import domain.domain.MenuRepository;
-import domain.domain.Money;
-import domain.domain.Table;
-import domain.domain.payment.Payment;
+import domain.MenuRepository;
+import domain.Money;
+import domain.Table;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class PaymentTest {
+class PaymentTypeTest {
 
     @Test
     @DisplayName("현금으로 결제는 10% 할인")
@@ -20,7 +19,7 @@ class PaymentTest {
         table.addOrder(MenuRepository.menus().get(7), 4);
 
         // when
-        Money discountedSum = Payment.CASH.calculate(table.calculateSum());
+        Money discountedSum = PaymentType.CASH.calculate(table.calculateSum());
 
         // then
         assertEquals(discountedSum, new Money(18_000));
@@ -35,7 +34,7 @@ class PaymentTest {
         table.addOrder(MenuRepository.menus().get(7), 4);
 
         // when
-        Money discountedSum = Payment.CARD.calculate(table.calculateSum());
+        Money discountedSum = PaymentType.CARD.calculate(table.calculateSum());
 
         // then
         assertEquals(discountedSum, new Money(20_000));

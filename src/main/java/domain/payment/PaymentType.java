@@ -1,6 +1,6 @@
-package domain.domain.payment;
+package domain.payment;
 
-import domain.domain.Money;
+import domain.Money;
 
 import java.util.Arrays;
 
