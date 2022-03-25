@@ -13,7 +13,4 @@ public class Order {
         this.count = count;
     }
 
-    public int calculatePrice() {
-        return menu.getPrice() * count;
-    }
 }

@@ -12,13 +12,17 @@ public class Money {
     }
 
     private void validate(int money) {
-        if (money <= 0) {
+        if (money < 0) {
             throw new IllegalStateException("돈은 0원 보다 커야합니다.");
         }
     }
 
     public int getAmount() {
         return amount;
+    }
+
+    public void calculateOrder(Money money, int count) {
+        this.amount += (money.getAmount() * count);
     }
 
     @Override

@@ -21,18 +21,4 @@ class OrderTest {
         assertEquals(order.getMenu(), friedChicken);
         assertEquals(order.getCount(), orderCount);
     }
-
-    @Test
-    @DisplayName("주문 금액 확인")
-    void checkOrderPrice() {
-        // given
-        Menu halfChicken = new MenuRepository().menus().get(3);
-        int price = halfChicken.getPrice();
-
-        // when
-        Order order = new Order(halfChicken, 2);
-
-        // then
-        assertEquals(order.calculatePrice(), 32_000);
-    }
 }
