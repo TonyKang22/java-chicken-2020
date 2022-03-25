@@ -1,9 +1,4 @@
-package domain.domain;
-
-import domain.domain.Menu;
-import domain.domain.Money;
-import domain.domain.OrderStatus;
-import domain.domain.Orders;
+package domain;
 
 import java.util.Map;
 
