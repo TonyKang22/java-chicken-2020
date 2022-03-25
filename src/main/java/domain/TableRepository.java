@@ -20,10 +20,10 @@ public class TableRepository {
         return Collections.unmodifiableList(tables);
     }
 
-    public static Table findByNumber(int id) throws IllegalAccessException {
+    public static Table findByNumber(int id) throws IllegalStateException {
         return tables().stream()
                 .filter(table -> table.validateSameTable(id))
                 .findFirst()
-                .orElseThrow(() -> new IllegalAccessException("존재하지 않는 테이블입니다."));
+                .orElseThrow(() -> new IllegalStateException("존재하지 않는 테이블입니다."));
     }
 }

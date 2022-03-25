@@ -1,9 +1,4 @@
-package domain.domain;
-
-import domain.controller.CommandController;
-import domain.controller.ExitController;
-import domain.controller.PayController;
-import domain.controller.RegisterController;
+package controller;
 
 import java.util.Arrays;
 

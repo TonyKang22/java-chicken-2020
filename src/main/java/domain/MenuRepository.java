@@ -18,11 +18,11 @@ public class MenuRepository {
         menus.add(new Menu(22, "사이다", Category.BEVERAGE, new Money(1_000)));
     }
 
-    public static Menu findById(int id) throws IllegalAccessException {
+    public static Menu findById(int id) throws IllegalStateException {
         return menus.stream()
                 .filter(value -> value.validateSameMenu(id))
                 .findFirst()
-                .orElseThrow(() -> new IllegalAccessException("메뉴를 다시 확인하시고 주문해주세요."));
+                .orElseThrow(() -> new IllegalStateException("메뉴를 다시 확인하시고 주문해주세요."));
     }
 
     public static List<Menu> menus() {
