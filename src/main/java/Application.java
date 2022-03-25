@@ -1,23 +1,22 @@
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import controller.Action;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class Application {
     // TODO 구현 진행
     public static void main(String[] args) {
-        final List<Table> tables = TableRepository.tables();
-        OutputView.printTables(tables);
+        OutputView.printAction();
+        while (true) {
+            runPOS();
+        }
+    }
 
-        final int tableNumber = InputView.inputTableNumber();
-
-//        List<Menu> menus = MenuRepository.menus();
-//        OutputView.printMenus(menus);
-
-        final int menuNumber = InputView.inputMenuNumber();
+    private static void runPOS() {
+        try {
+            Action.of(InputView.inputActionId()).run();
+            OutputView.printAction();
+        } catch (Exception e) {
+            OutputView.printException(e);
+        }
     }
 }

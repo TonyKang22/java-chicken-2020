@@ -1,17 +1,16 @@
-package domain.controller;
+package controller;
 
-import domain.controller.CommandController;
-import domain.domain.Menu;
-import domain.domain.MenuRepository;
-import domain.domain.Table;
-import domain.domain.TableRepository;
+import domain.Menu;
+import domain.MenuRepository;
+import domain.Table;
+import domain.TableRepository;
 import view.InputView;
 import view.OutputView;
 
 public class RegisterController implements CommandController {
 
     @Override
-    public void run() throws IllegalAccessException {
+    public void run() throws IllegalStateException {
         OutputView.printTables(TableRepository.tables());
         Table table = TableRepository.findByNumber(InputView.inputTableNumber());
         OutputView.printMenus(MenuRepository.menus());

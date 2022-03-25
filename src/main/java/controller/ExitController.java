@@ -1,6 +1,4 @@
-package domain.controller;
-
-import domain.controller.CommandController;
+package controller;
 
 public class ExitController implements CommandController {
 
