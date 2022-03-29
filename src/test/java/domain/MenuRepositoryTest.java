@@ -27,8 +27,8 @@ class MenuRepositoryTest {
     }
 
     @Test
-    @DisplayName("동일 메뉴 확인")
-    void test() throws IllegalAccessException {
+    @DisplayName("Id로 메뉴 찾기")
+    void findMenuById() throws IllegalAccessException {
         // given
         Menu menu = MenuRepository.menus().get(0);
 

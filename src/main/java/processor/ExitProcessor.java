@@ -1,6 +1,6 @@
-package controller;
+package processor;
 
-public class ExitController implements CommandController {
+public class ExitProcessor implements CommandProcessor {
 
     private static final int EXIT = 0;
 

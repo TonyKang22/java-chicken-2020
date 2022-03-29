@@ -2,30 +2,34 @@ package domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MoneyTest {
 
-    @Test
     @DisplayName("금액 확인")
-    void setMoney() {
+    @ParameterizedTest(name = "{index} {displayName}, input = {0}")
+    @ValueSource(ints = {10_000, 20_000, 500_000})
+    void createMoney(int input) {
         // given
-        int amount = 16000;
+        int amount = input;
 
         // when
         Money money = new Money(amount);
 
         // then
         assertNotNull(money);
-        assertEquals(money.getAmount(), 16000);
+        assertEquals(money.getAmount(), input);
     }
 
-    @Test
     @DisplayName("0원보다 적은 금액")
-    void amountSmallerThenZero() {
+    @ParameterizedTest(name = "{index} = {displayName}, input = {0}")
+    @ValueSource(ints = {-1000, -20_0000, -500_000})
+    void amountSmallerThenZero(int input) {
         // given
-        int amount = -1000;
+        int amount = input;
 
         // when
         IllegalStateException exception = assertThrows(IllegalStateException.class, () -> new Money(amount));
@@ -58,6 +62,20 @@ class MoneyTest {
 
         // then
         assertNotEquals(twoDollars, threeDollars);
+    }
+
+    @Test
+    @DisplayName("차액 확인")
+    void subtractMoney() {
+        // given
+        Money tenDollars = new Money(10_000);
+        Money twentyDollars = new Money(20_000);
+
+        // when
+        Money subtractedMoney = new Money(twentyDollars.getAmount() - tenDollars.getAmount());
+
+        // then
+        assertEquals(twentyDollars.subtractMoney(tenDollars), subtractedMoney);
     }
 
 }

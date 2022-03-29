@@ -1,4 +1,4 @@
-package domain.payment;
+package processor.payment;
 
 import domain.MenuRepository;
 import domain.Money;
@@ -6,21 +6,22 @@ import domain.Table;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ChickenDiscountPolicyTest {
+class QuantityDiscountPolicyTest {
 
     @Test
     @DisplayName("20 마리 주문하면 20000원 할인")
-    void dicountTwoForTwenty() {
+    void discountTwoForTwenty() {
         // given
         Table table = new Table(6);
+        DiscountPolicy policy = new QuantityDiscountPolicy();
 
         // when
         table.addOrder(MenuRepository.menus().get(3), 20);
 
         // then
-        assertEquals(ChickenDiscountPolicy.getDiscountMoney(table.getOrders()), new Money(20_000));
+        assertEquals(policy.discount(table), new Money(20_000));
     }
 
     @Test
@@ -28,12 +29,13 @@ class ChickenDiscountPolicyTest {
     void noDiscountUnderTenChicken() {
         // given
         Table table = new Table(6);
+        DiscountPolicy policy = new QuantityDiscountPolicy();
 
         // when
         table.addOrder(MenuRepository.menus().get(3), 9);
 
         // then
-        assertEquals(ChickenDiscountPolicy.getDiscountMoney(table.getOrders()), new Money(0));
+        assertEquals(policy.discount(table), new Money(0));
     }
 
 }

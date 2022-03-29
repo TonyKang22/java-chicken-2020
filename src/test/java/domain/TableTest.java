@@ -2,6 +2,9 @@ package domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.aggregator.ArgumentsAccessor;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,24 +19,12 @@ class TableTest {
         // when
 
         // then
-        assertNotNull(table.getOrders());
+        assertNotNull(table.getOrder());
     }
 
     @Test
-    @DisplayName("주문 하지 않았을 때 상태는 WAITING")
-    void checkStatusWithoutOrdering() {
-        // given
-        Table table = new Table(2);
-
-        // when
-
-        // then
-        assertEquals(table.getOrderStatus(), OrderStatus.WAITING);
-    }
-
-    @Test
-    @DisplayName("주문시 테이블 상태 변경")
-    void changeStatusWhenOrdered() {
+    @DisplayName("주문 시 테이블 상태")
+    void checkStatusWhenOrdered() {
         // given
         Table table = new Table(2);
 
@@ -41,21 +32,35 @@ class TableTest {
         table.addOrder(MenuRepository.menus().get(0), 2);
 
         // then
-        assertEquals(table.getOrderStatus(), OrderStatus.ORDERED);
+        assertTrue(!table.isEmpty());
+    }
+
+    @DisplayName("테이블 총액 계산하기")
+    @ParameterizedTest(name = "{displayName}")
+    @CsvSource({"1, 1, 1, 16000"}) // Mock 만들어서 넘겨주는게 나을듯
+    void test(ArgumentsAccessor argAccessor) {
+        // given
+        Table table = new Table(argAccessor.getInteger(0));
+
+        // when
+        table.addOrder(MenuRepository.menus().get(argAccessor.getInteger(1)),argAccessor.getInteger(2));
+
+        // then
+        assertEquals(table.calculateSum(), new Money(argAccessor.getInteger(3)));
     }
 
     @Test
-    @DisplayName("테이블 총액 계산하기")
-    void test() {
+    @DisplayName("주문 총액 계산")
+    void calculateTotalAmount() {
         // given
         Table table = new Table(1);
 
         // when
-        table.addOrder(MenuRepository.menus().get(7), 4);
-        table.addOrder(MenuRepository.menus().get(1),1);
+        table.addOrder(MenuRepository.menus().get(1), 1);
+        table.addOrder(MenuRepository.menus().get(2), 1);
+        Money sum = table.calculateSum();
 
         // then
-        assertEquals(table.calculateSum(), new Money(20_000));
+        assertEquals(sum, new Money(32_000));
     }
-
 }

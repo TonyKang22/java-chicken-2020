@@ -1,16 +1,21 @@
 package controller;
 
+import processor.CommandProcessor;
+import processor.ExitProcessor;
+import processor.PayProcessor;
+import processor.RegisterProcessor;
+
 import java.util.Arrays;
 
 public enum Action {
-    Registration(1, new RegisterController()),
-    PAY(2, new PayController()),
-    EXIT(3, new ExitController());
+    Registration(1, new RegisterProcessor()),
+    PAY(2, new PayProcessor()),
+    EXIT(3, new ExitProcessor());
 
     private final int id;
-    private final CommandController command;
+    private final CommandProcessor command;
 
-    Action(int id, CommandController command) {
+    Action(int id, CommandProcessor command) {
         this.id = id;
         this.command = command;
     }

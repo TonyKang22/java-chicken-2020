@@ -1,20 +1,27 @@
-package controller;
+package processor;
 
-import domain.Menu;
-import domain.MenuRepository;
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
 import view.InputView;
 import view.OutputView;
 
-public class RegisterController implements CommandController {
+public class RegisterProcessor implements CommandProcessor {
 
     @Override
     public void run() throws IllegalStateException {
         OutputView.printTables(TableRepository.tables());
-        Table table = TableRepository.findByNumber(InputView.inputTableNumber());
+
+        Table table = selectTable(InputView.inputTableNumber());
+        orderMenu(table);
+    }
+
+    private Table selectTable(int tableId) {
+        return TableRepository.findByNumber(tableId);
+    }
+
+    private void orderMenu(Table table) {
         OutputView.printMenus(MenuRepository.menus());
         Menu menu = MenuRepository.findById(InputView.inputMenuId());
+
         table.addOrder(menu, InputView.inputMenuCount());
     }
 }

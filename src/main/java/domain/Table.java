@@ -1,46 +1,44 @@
 package domain;
 
-import java.util.Map;
+import lombok.Getter;
 
+@Getter
 public class Table {
 
-    private Orders orders;
+    private static final int ORDER_START = 0;
+    private static final int LIMITED_CHICKEN_NUMBER = 99;
+
     private final int id;
-    private OrderStatus orderStatus;
+    private Order order;
 
     public Table(final int id) {
-        this.orders = new Orders();
-        this.orderStatus = OrderStatus.WAITING;
         this.id = id;
+        this.order = new Order();
     }
 
     public void addOrder(Menu menu, int count) {
-        orderStatus = OrderStatus.ORDERED;
-        orders.addOrder(menu, count);
+        this.order.addOrder(menu, count);
     }
 
     public Money calculateSum() {
-        return orders.calculateSum();
-    }
-
-    public Orders getOrders() {
-        return this.orders;
-    }
-
-    public Map<Menu, Integer> getOrderedMenus() {
-        return orders.getOrderedMenus();
-    }
-
-    public OrderStatus getOrderStatus() {
-        return this.orderStatus;
+        Money sum = new Money(ORDER_START);
+        for (Menu menu : MenuRepository.menus()) {
+            int menuCount = order.getMenuCount(menu);
+            sum.calculateOrder(menu.getPrice(), menuCount);
+        }
+        return sum;
     }
 
     public boolean validateSameTable(int id) {
         return this.id == id;
     }
 
-    public int getId() {
-        return this.id;
+    public boolean isEmpty() {
+        return !order.hasOrders();
+    }
+
+    public void cleanTable() {
+        this.order = new Order();
     }
 
     @Override

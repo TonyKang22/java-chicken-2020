@@ -26,8 +26,8 @@ public class Money {
     }
 
     public Money subtractMoney(Money money) {
-        int subtratedAmount = this.amount - money.getAmount();
-        return new Money(subtratedAmount);
+        int subtractedAmount = this.amount - money.getAmount();
+        return new Money(subtractedAmount);
     }
 
     public String toString() {

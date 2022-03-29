@@ -1,15 +1,16 @@
-package domain.payment;
+package processor.payment;
 
 import domain.Money;
 
 import java.util.Arrays;
 
 public enum PaymentType {
-    CARD(1, 1),
-    CASH(2, 0.9);
 
-    private final double discountRate;
+    CARD(1, 1),
+    CASH(2, 0.95);
+
     private final int id;
+    private final double discountRate;
 
     PaymentType(int id, double discountRate) {
         this.id = id;
@@ -26,5 +27,4 @@ public enum PaymentType {
     public Money calculate(Money total) {
         return new Money((int) (this.discountRate * total.getAmount()));
     }
-
 }
