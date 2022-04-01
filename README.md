@@ -82,39 +82,6 @@ CommandProcessor 인터페이스를 통해 **다양한 객체가 역할을 통�
 
 <br>
 
-**기술 스택**
-- 자바 8
-    * Lambda식을 코드를 간결함과, 가독성의 개선을 위해 사용했습니다.
-    * 마찬가지로 간결함과 가독성의 개선, 간단한 파이프라이닝을 위해 Stream을 사용했습니다.
-    
-<br>
-
-- Gradle
-    * 눈에 띄는 차이점으로는 기존의 Ant, Maven과 같은 빌드 툴의 xml 형식이 아닌, Groovy라는 언어를 이용해 코드로서 설정정보를 구성한다는 것입니다.
-    * 또한 다른 빌드 툴 대비, 다음과 같은 장점을 가지고 있습니다.
-        + Incrementality - Gradle은 작업의 입출력을 추적하여 필요한 것만 실행하고 가능한 경우 변경된 파일만 처리하여 작업을 최소화한다.
-        + Build Cache - 같은 기기에 동일한 입력이 있을 경우 Gradle 빌드 캐시의 결과를 재사용한다.
-        + Gradle Daemon - 빌드 정보를 메모리에 올려 유지하는 수명이 긴 Daemon process를 사용한다.
-    * 위와 같은 장점들을 가지고 있어 개발자가 코드에 더 집중할 수 있는 환경을 제공해준다고 생각해 gradle을 사용했습니다.
-    * 아래(좌: Gradle, 우: Maven)는 gradle에서 제공한 "Gradle vs Maven performance comparison"으로 gradle이 maven 대비 약 100배까지도 빠른 빌드를 제공합다고 합니다. 
-![Apr-01-2022 19-31-23](https://user-images.githubusercontent.com/86760744/161252348-894d4ab9-c7b5-4efb-8d2e-eab7b371407d.gif)
-    
-<br>
-
-- JUnit 5  
-![JUnit5 drawio](https://user-images.githubusercontent.com/86760744/161252272-b787b2ce-5a36-4c8d-9996-42a816980b42.png)
-    * Springboot 2.2+ 부터 JUnit5가 기본으로 탑재됩니다.
-    * 그림과 같이, JUnit5의 구조로 인해 기존의 JUnit3,4 또한 JUnit5로 실행할 수 있습니다. 
-    * 메타 애노테이션을 지원하고 여러 번 중복 사용할 수 있다는 차이점이 있습니다.
-
-<br>
-
-- Mockito
-    * 단위 테스트에서 테스트의 의존도를 더 느슨하게 하기 위해 사용했습니다.
-    * 구현체가 없이 인터페이스만 존재할 때 테스트를 작성하기 위해 사용했습니다.
-
-<br>
-
 ### 💡 Feature List
 - 주문하기
     * [X] 메뉴판 정보로 주문
@@ -146,6 +113,39 @@ CommandProcessor 인터페이스를 통해 **다양한 객체가 역할을 통�
     * [X] 마릿수 초과 할인 미적용
     * [X] 현금 결제 할인 미적용
     * [X] 주문, 결제 불가능할 경우 재주문 및 결제 불가능
+
+<br>
+
+**기술 스택**
+- 자바 8
+    * Lambda식을 코드를 간결함과, 가독성의 개선을 위해 사용했습니다.
+    * 마찬가지로 간결함과 가독성의 개선, 간단한 파이프라이닝을 위해 Stream을 사용했습니다.
+    
+<br>
+
+- Gradle
+    * 눈에 띄는 차이점으로는 기존의 Ant, Maven과 같은 빌드 툴의 xml 형식이 아닌, Groovy라는 언어를 이용해 코드로서 설정정보를 구성한다는 것입니다.
+    * 또한 다른 빌드 툴 대비, 다음과 같은 장점을 가지고 있습니다.
+        + Incrementality - Gradle은 작업의 입출력을 추적하여 필요한 것만 실행하고 가능한 경우 변경된 파일만 처리하여 작업을 최소화한다.
+        + Build Cache - 같은 기기에 동일한 입력이 있을 경우 Gradle 빌드 캐시의 결과를 재사용한다.
+        + Gradle Daemon - 빌드 정보를 메모리에 올려 유지하는 수명이 긴 Daemon process를 사용한다.
+    * 위와 같은 장점들을 가지고 있어 개발자가 코드에 더 집중할 수 있는 환경을 제공해준다고 생각해 gradle을 사용했습니다.
+    * 아래(좌: Gradle, 우: Maven)는 gradle에서 제공한 "Gradle vs Maven performance comparison"으로 gradle이 maven 대비 약 100배까지도 빠른 빌드를 제공합다고 합니다. 
+![Apr-01-2022 19-31-23](https://user-images.githubusercontent.com/86760744/161252348-894d4ab9-c7b5-4efb-8d2e-eab7b371407d.gif)
+    
+<br>
+
+- JUnit 5  
+![JUnit5 drawio](https://user-images.githubusercontent.com/86760744/161252272-b787b2ce-5a36-4c8d-9996-42a816980b42.png)
+    * Springboot 2.2+ 부터 JUnit5가 기본으로 탑재됩니다.
+    * 그림과 같이, JUnit5의 구조로 인해 기존의 JUnit3,4 또한 JUnit5로 실행할 수 있습니다. 
+    * 메타 애노테이션을 지원하고 여러 번 중복 사용할 수 있다는 차이점이 있습니다.
+
+<br>
+
+- Mockito
+    * 단위 테스트에서 테스트의 의존도를 더 느슨하게 하기 위해 사용했습니다.
+    * 구현체가 없이 인터페이스만 존재할 때 테스트를 작성하기 위해 사용했습니다.
 
 <br>
 
