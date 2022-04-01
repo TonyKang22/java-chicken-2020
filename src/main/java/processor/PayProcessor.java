@@ -19,8 +19,7 @@ public class PayProcessor implements CommandProcessor {
         Table table = selectTable(InputView.inputTableNumberPay());
 
         OutputView.printPay(table);
-        DiscountPolicy quantity = new QuantityDiscountPolicy();
-        PaymentManager chosenType = choosePaymentType(quantity);
+        PaymentManager chosenType = checkForDiscount(new QuantityDiscountPolicy());
         OutputView.printTotalPayAmount(chosenType.calculateActualTotal(table));
         table.cleanTable();
     }
@@ -36,5 +35,9 @@ public class PayProcessor implements CommandProcessor {
     private PaymentManager choosePaymentType(DiscountPolicy policy) {
         PaymentType paymentType = PaymentType.of(InputView.inputPaymentOption());
         return new PaymentManager(paymentType, policy);
+    }
+
+    private PaymentManager checkForDiscount(DiscountPolicy discountPolicy) {
+        return choosePaymentType(discountPolicy);
     }
 }

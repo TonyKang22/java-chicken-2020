@@ -32,12 +32,12 @@ class TableTest {
         table.addOrder(MenuRepository.menus().get(0), 2);
 
         // then
-        assertTrue(!table.isEmpty());
+        assertFalse(table.isEmpty());
     }
 
     @DisplayName("테이블 총액 계산하기")
     @ParameterizedTest(name = "{displayName}")
-    @CsvSource({"1, 1, 1, 16000"}) // Mock 만들어서 넘겨주는게 나을듯
+    @CsvSource({"1, 1, 1, 16000"})
     void test(ArgumentsAccessor argAccessor) {
         // given
         Table table = new Table(argAccessor.getInteger(0));

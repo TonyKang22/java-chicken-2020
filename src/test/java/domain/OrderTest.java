@@ -28,7 +28,7 @@ class OrderTest {
         Order order = new Order();
 
         // when
-        order.addOrder(menuRepository.menus().get(0), 10);
+        order.addOrder(MenuRepository.menus().get(0), 10);
 
         // then
         assertEquals(order.countChickenOrder(), 10);

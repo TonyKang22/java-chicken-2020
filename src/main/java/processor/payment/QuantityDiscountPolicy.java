@@ -1,6 +1,7 @@
 package processor.payment;
 
 import domain.Money;
+import domain.Order;
 import domain.Table;
 
 public class QuantityDiscountPolicy implements DiscountPolicy {
@@ -10,7 +11,8 @@ public class QuantityDiscountPolicy implements DiscountPolicy {
 
     @Override
     public Money discount(Table table) {
-        int chickenNumber = table.getOrder().countChickenOrder();
+        Order order = table.getOrder();
+        int chickenNumber = order.countChickenOrder();
         return new Money((chickenNumber / PER_CHICKEN) * DISCOUNT_MONEY);
     }
 }

@@ -20,7 +20,7 @@ class TableRepositoryTest {
         tables = TableRepository.tables();
 
         // then
-        assertTrue(tables.size() == 6);
+        assertEquals(6, tables.size());
     }
 
     @Test

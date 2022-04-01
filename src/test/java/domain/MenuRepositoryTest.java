@@ -10,10 +10,10 @@ import static org.junit.jupiter.api.Assertions.*;
 class MenuRepositoryTest {
 
     @Test
-    @DisplayName("메뉴는 더 추가할 수 없다.")
+    @DisplayName("메뉴는 바꿀 수 없다.")
     void cantChangeMenu() {
         // given
-        int id = 8;
+        int id = 1;
         String name = "뿌링클치킨";
         Category category = Category.CHICKEN;
         Money price = new Money(20_000);

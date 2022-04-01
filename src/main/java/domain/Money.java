@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Money {
 
-    int amount;
+    private int amount;
 
     public Money(int money) {
         validate(money);

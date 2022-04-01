@@ -76,15 +76,6 @@ public class OutputView {
         System.out.println(e.getMessage());
     }
 
-    private static void printOrderedMenus(StringBuilder sb, Map<Menu, Integer> orders) {
-        orders.forEach((key, value) -> sb.append(key.getName())
-                .append(THREE_SPACE)
-                .append(value.toString())
-                .append(THREE_SPACE)
-                .append(key.getPrice())
-                .append(NEW_LINE));
-    }
-
     public static void printPay(Table table) {
         String str = table.getId() +
                 START_PAYMENT +
