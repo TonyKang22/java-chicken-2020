@@ -1,5 +1,3 @@
-package controller;
-
 import processor.CommandProcessor;
 import processor.ExitProcessor;
 import processor.PayProcessor;

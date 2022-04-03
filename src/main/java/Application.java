@@ -1,4 +1,3 @@
-import controller.PosProgram;
 import view.OutputView;
 
 public class Application {
