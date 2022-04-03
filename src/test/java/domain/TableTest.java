@@ -19,11 +19,6 @@ class TableTest {
         table = new Table(1);
     }
 
-    @AfterEach
-    void clearTable() {
-        table.cleanTable();
-    }
-
     @Test
     @DisplayName("주문 시 테이블 상태")
     void checkStatusWhenOrdered() {
