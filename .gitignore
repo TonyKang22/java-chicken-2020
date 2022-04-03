@@ -1,0 +1,17 @@
+# gradle template
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ignore all .class files
+*.class
+
+# exclude lib.class from "*.class", meaning all lib.class are still tracked
+!lib.class
+
+# ignore files about intellij
+.idea
+*.iws
+*.iml
+*.ipr
+/out

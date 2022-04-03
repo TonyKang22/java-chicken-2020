@@ -1,20 +1,22 @@
 package domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+@Getter
+@AllArgsConstructor
 public class Menu {
-    private final int number;
+    private final int id;
     private final String name;
     private final Category category;
-    private final int price;
+    private final Money price;
 
-    public Menu(final int number, final String name, final Category category, final int price) {
-        this.number = number;
-        this.name = name;
-        this.category = category;
-        this.price = price;
+    public boolean validateSameMenu(int id) {
+        return this.id == id;
     }
 
     @Override
     public String toString() {
-        return category + " " + number + " - " + name + " : " + price + "원";
+        return category + " " + id + " - " + name + " : " + price + "원";
     }
 }
