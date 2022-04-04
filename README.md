@@ -58,7 +58,7 @@
 
 ### 🏗 POS Project Architecture
 
-!['](https://user-images.githubusercontent.com/86760744/161252227-2138a580-7354-42b5-8ea6-6da0b0afab04.png)
+![](../diagram.drawio.png)
 
 조영호님의 도서인 **"객체지향의 사실과 오해", "오브젝트"** 를 읽고 이해한 바를 기반으로 작성하려 노력했습니다.  
 먼저 기능 목록을 작성하며 주어진 문제를 이해하고, 문제를 해결하기 위해 **어떤 메시지**를 보낼 것인지 먼저 생각하며 설계했습니다.  

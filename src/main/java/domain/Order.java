@@ -24,7 +24,7 @@ public class Order {
     }
 
     public int countChickenOrder() {
-        return (int) (Integer) orders.entrySet().stream()
+        return orders.entrySet().stream()
                 .filter(map -> map.getKey().getCategory() == Category.CHICKEN)
                 .mapToInt(Map.Entry::getValue)
                 .sum();

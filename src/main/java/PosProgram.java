@@ -1,5 +1,3 @@
-package controller;
-
 import view.InputView;
 import view.OutputView;
 
